@@ -2,6 +2,8 @@
 
 ## Linux File System
 
+> File organisation in a Linux System
+
  Directory | Description
  ----------|------------------------------------------------------------------------------------------
  / (root filesystem) |	The root filesystem is the top-level directory of the filesystem. It must contain all of the files required to boot the Linux system before other filesystems are mounted. It must include all of the required executables and libraries required to boot the remaining filesystems. After the system is booted, all other filesystems are mounted on standard, well-defined mount points as subdirectories of the root filesystem.
@@ -19,3 +21,38 @@
  /tmp |	Temporary directory. Used by the operating system and many programs to store temporary files. Users may also store files here temporarily. Note that files stored here may be deleted at any time without prior notice.
  /usr |	These are shareable, read-only files, including executable binaries and libraries, man files, and other types of documentation.
  /var |	Variable data files are stored here. This can include things like log files, MySQL, and other database files, web server data files, email inboxes, and much more.
+
+ ## Linux Introduction
+
+ Linux is an Open Source kernel, upon which a lot of distributions have been built. Two of the most commons families include Red Hat Enterprise (RHEL) and Debain based Operating systems. Below is a few of the linux distributions from each family.
+
+ RHEL | DEBIAN
+ ------|---------------------------
+ Red Hat Enterorise Linux | Debain
+ CentOS | Ubuntu
+ Fedora | Linux Mint
+ Oracle | Deepin
+
+ ## Package Manager
+
+A package manager or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer's operating system in a consistent manner.
+
+`~ Wikipedia`
+
+While debian based systems use `apt` as the package manager, RHEL based systems use `yum` wihis  is now deprecated in RHEL 8 and replaced with `dnf`.
+
+e.g To install nginx on these systems, one would type:
+
+
+### Debain based system
+
+apt install nginx
+
+apt-get install nginx
+
+
+### RHEL based system
+
+dnf install nginx
+
+yum install nginx (deprecated)
