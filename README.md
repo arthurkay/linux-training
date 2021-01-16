@@ -1,5 +1,14 @@
 # Linux Training
 
+# Table of Contents
+
+[File organisation in a Linux System](#linux-file-system)
+
+[Package Manager](#package-manager)
+
+[More on Package Managers](#more-on-package-managers)
+
+
 ## Linux File System
 
 > File organisation in a Linux System
@@ -56,3 +65,14 @@ apt-get install nginx
 dnf install nginx
 
 yum install nginx (deprecated)
+
+## More On Package Managers
+
+> Usage: <...> means a required parameter
+>  [...] optional parameter
+
+Command (Debian) | Command (RHEL) | Explanation
+-----------------|-----------------|------------------
+apt install \<program\> | yum install \<program\>  <br /> or <br /> dnf install \<program\> | Install a program called `program`
+apt update | yum update <br /> or <br /> dnf update | Used to download latest package information from configured sources. For RHEL configured sources set options for individual repositories by editing the \[repository\] sections in /etc/yum.conf and .repo files in the /etc/yum.repos.d/ directory. For Debian based systems, this is done from /etc/apt/sources.list or files in the directory /etc/apt/sources.list.d
+sudo add-apt-repository 'deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse' | rpm -ivh https://centos.pkgs.org/7/mongodb-4.2-x86_64/mongodb-org-4.2.11-1.el7.x86_64.rpm | An example of getting the repository for mongo db
