@@ -4,6 +4,8 @@
 
 [File organisation in a Linux System](#linux-file-system)
 
+[Listing Finding Contents](#listing-finding-contents)
+
 [Package Manager](#package-manager)
 
 [More on Package Managers](#more-on-package-managers)
@@ -42,6 +44,43 @@
  Fedora | Linux Mint
  Oracle | Deepin
 
+ ## Listing Finding contents
+
+ The main command used to list directory contents is `ls`. The comand can also be used to pipe its output as input to the `grep` command to fine tune one's searches.
+
+ >e.g To list case insensitive files containing the phrase `text`
+  
+  ```bash
+  ls -a | grep -i 'text'
+  ```
+
+ >e.g To list case sensitive files containing the phrase `text`, drop the `-i` flag 
+
+```bash
+ls -a | grep 'text'
+```
+
+>e.g To list files that end in `.txt`, add a `$` sign at the end of the regular expression
+
+```bash
+ls -a | grep -i '.txt'$
+```
+
+>e.g To list filess that start with `index` use the caret symbole before the regular expressions.
+
+```bash
+ls -a | grep -i ^'index'
+```
+
+Aside from using ls and piping its output to stdout, one can also use the `find` command to locate files.
+>Note: `find` unlike `ls` does not take a regular expressions, instead it takes a complete file/directory name. Aside from the directory name, once can also specify wether to look for a file or directory by parsing the `f` flag for file and `d` flag for directory.
+
+e.g
+
+
+```bash
+find ./ -name index.html -type f
+```
  ## Package Manager
 
 A package manager or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer's operating system in a consistent manner.
@@ -76,3 +115,7 @@ Command (Debian) | Command (RHEL) | Explanation
 apt install \<program\> | yum install \<program\>  <br /> or <br /> dnf install \<program\> | Install a program called `program`
 apt update | yum update <br /> or <br /> dnf update | Used to download latest package information from configured sources. For RHEL configured sources set options for individual repositories by editing the \[repository\] sections in /etc/yum.conf and .repo files in the /etc/yum.repos.d/ directory. For Debian based systems, this is done from /etc/apt/sources.list or files in the directory /etc/apt/sources.list.d
 sudo add-apt-repository 'deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse' | rpm -ivh https://centos.pkgs.org/7/mongodb-4.2-x86_64/mongodb-org-4.2.11-1.el7.x86_64.rpm | An example of getting the repository for mongo db
+apt list \<program\> | yum list \<program\> <br /> dnf list \<program\> | Display installed and available packages
+apt-cache search \<program\> | yum search \<program\> <br /> dnf search \<program\> | List packages by keywords found in summary fields
+apt-cache show \<program\> | yum info \<program\> <br /> dnf info \<program\> | Get detailed information of the specififed package
+apt remove \<program\> | yum remove \<program\> <br /> dnf remove \<program\> | Remove the specified program from system 
